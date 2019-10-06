@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 abstract public class NumberMgr : MonoBehaviour
 {
-    
+    public bool isTSN = false;
     public int myNum;
     protected void Initialize(){
         var b = GetComponent<Button>();

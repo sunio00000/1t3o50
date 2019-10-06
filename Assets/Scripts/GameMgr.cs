@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 public enum State{
     NONE,
     PLAY,
@@ -16,13 +17,17 @@ public class GameMgr : MonoBehaviour
     private const int MAX =5;
     private const float PAD = 155.0f;
     public GameObject btn, gameView;
+    public Text showTime;
     public static int currNum;
     public static State GameState;
     private string time; // 시작시간, 걸린시간, ...
+    public static DateTime dateTime,currTime;
     // (x,y) 좌상단부터 시작.
     private void Initialize(){
         currNum = 1;
-
+        GameState = State.NONE;
+        time = "00:00.0000";
+        showTime.text = time;
         for(int y=0; y<MAX; ++y){
             for(int x=0; x<MAX; ++x){
                 Transform tr = Instantiate(btn).transform;
@@ -33,23 +38,50 @@ public class GameMgr : MonoBehaviour
             }
         }
     }
+    
+    public static bool IsTSN(char n){
+        return n=='3' || n == '6' || n == '9';
+    }
+    
     public static void SetNumber( Transform tr, int min , int max){
         int num;
         do{
-            num = Random.Range(min,max);
+            num = UnityEngine.Random.Range(min,max);
         }while(IsExist.ContainsKey(num));
         IsExist[num] = true;
-        tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+        if(num.ToString().Length==1){
+            if(IsTSN(num.ToString()[0])) {
+                tr.GetChild(0).GetComponent<Text>().text = "★";
+                tr.GetComponent<NumberMgr>().isTSN = true;
+            }
+            else tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+
+        }
+        else if(num.ToString().Length==2){
+            if(IsTSN(num.ToString()[0]) || IsTSN(num.ToString()[1])) {
+                tr.GetChild(0).GetComponent<Text>().text = "★";
+                tr.GetComponent<NumberMgr>().isTSN = true;
+            }
+            else tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+        }
         tr.GetComponent<Normal>().myNum = num;
     }
+
     private void Awake(){
         Initialize();
     }
 
     // 조작 관리
     private void Update(){
-        if(GameState == State.NONE){} // 게임 대기
-        else if(GameState == State.PLAY){} // 게임 진행 , 시간 기록, 버튼 클릭
+        if(GameState == State.NONE){
+            if(Input.GetMouseButton(0)){
+                MessageMgr.inst.CountDown();
+            }
+        } // 게임 대기
+        else if(GameState == State.PLAY){
+            TimeSpan curr = DateTime.Now-dateTime;
+            showTime.text = curr.ToString().Substring(3,curr.ToString().Length-6);
+        } // 게임 진행 , 시간 기록, 버튼 클릭
         else if(GameState == State.OPTION){} // 옵션
         else if(GameState ==State.CLEAR){} // 옵션2
     }

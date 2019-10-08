@@ -29,4 +29,18 @@ public class MessageMgr : MonoBehaviour
         GameMgr.dateTime = DateTime.Now;
         yield return null;
     }
+
+    public void Stop(){
+        go.SetActive(true);
+        StartCoroutine(Clear());
+    }
+
+    private IEnumerator Clear(){
+        float end = 0.0f;
+        msg.text = "Clear.";
+        while(end<1.0f){
+            end+=0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 }

@@ -13,17 +13,19 @@ public enum State{
 
 public class GameMgr : MonoBehaviour
 {
+    public static GameMgr inst;
+
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
     private const int MAX =5;
     private const float PAD = 155.0f;
-    public GameObject btn, gameView;
+    public GameObject btn, gameView, Current, Counted;
     public Text showTime;
     public static int currNum;
     public static State GameState;
     private string time; // 시작시간, 걸린시간, ...
     public static DateTime dateTime,currTime;
     // (x,y) 좌상단부터 시작.
-    private void Initialize(){
+    public void Initialize(){
         currNum = 1;
         GameState = State.NONE;
         time = "00:00.0000";
@@ -38,9 +40,26 @@ public class GameMgr : MonoBehaviour
             }
         }
     }
-    
+    public void SetViewNumb(int curr, int bef){
+        if(Counted.GetComponent<Animation>().isPlaying)
+            Counted.GetComponent<Animation>().Stop();
+        Current.GetComponent<Text>().text = curr.ToString();
+        Counted.GetComponent<Text>().text = bef.ToString();
+        Counted.GetComponent<Animation>().Play();
+    }
     public static bool IsTSN(char n){
         return n=='3' || n == '6' || n == '9';
+    }
+
+    public void Clear(){
+        MessageMgr.inst.Stop();
+        Initialize();
+    }
+    private void SaveScore(){
+        
+    }
+    private char ConvertIntToChar(int i){
+        return (char)(i+48);
     }
     
     public static void SetNumber( Transform tr, int min , int max){
@@ -68,6 +87,8 @@ public class GameMgr : MonoBehaviour
     }
 
     private void Awake(){
+        if(inst == null) inst = this;
+        else if(inst != this) Destroy(gameObject);
         Initialize();
     }
 

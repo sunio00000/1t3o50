@@ -1,6 +1,6 @@
 # 1to50 new Version
 
-### game loop, number anim, option ui
+### [191008] game loop, number anim, option ui
 
 ![3](https://user-images.githubusercontent.com/26760693/66415703-2799c300-ea37-11e9-8e3e-df407875d9ca.gif)
 

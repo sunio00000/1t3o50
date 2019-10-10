@@ -1,5 +1,8 @@
 # 1to50 new Version
 
+### [191011] add Resources, apply to ui
+![4](https://user-images.githubusercontent.com/26760693/66588724-103e0f80-ebc8-11e9-9b01-90d229e9df82.gif)
+
 ### [191010] option system, refresh tiles, option types
 
 ### [191008] game loop, number anim, option ui

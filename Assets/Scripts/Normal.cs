@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Normal : NumberMgr
 {
     protected override void Appear(){}
-    protected override void Disappear(){
+    protected override void Disappear(){    
         if(GameMgr.GameState == State.PLAY){
             if(myNum == GameMgr.currNum) NewNumber();
             else if(GameMgr.currNum < 10){
@@ -27,7 +27,7 @@ public class Normal : NumberMgr
     protected override  void FadeIn(){}
     protected override  void FadeOut(){}
     protected override  void NewNumber(){
-        if(GameMgr.currNum == 50) GameMgr.inst.Clear();
+        if(GameMgr.currNum == GameMgr.endValue) GameMgr.inst.Clear();
         else{
             GameMgr.currNum++;
             GameMgr.inst.SetViewNumb(GameMgr.currNum, GameMgr.currNum-1);

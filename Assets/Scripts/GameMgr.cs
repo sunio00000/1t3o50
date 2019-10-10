@@ -16,7 +16,7 @@ public class GameMgr : MonoBehaviour
     public static GameMgr inst;
 
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
-    private const int MAX =5;
+    public const int MAX =5, endValue = 11;
     private const float PAD = 155.0f;
     public GameObject btn, gameView, Current, Counted;
     public Text showTime;
@@ -30,6 +30,9 @@ public class GameMgr : MonoBehaviour
         GameState = State.NONE;
         time = "00:00.0000";
         showTime.text = time;
+        IsExist.Clear();
+    }
+    public void CreateTiles(){
         for(int y=0; y<MAX; ++y){
             for(int x=0; x<MAX; ++x){
                 Transform tr = Instantiate(btn).transform;
@@ -40,6 +43,13 @@ public class GameMgr : MonoBehaviour
             }
         }
     }
+    public void RefreshTiles(){
+        Transform parent = gameView.transform;
+        for(int child=0; child<parent.childCount;++child){
+            SetNumber(parent.GetChild(child),1,26);
+        }
+    }
+
     public void SetViewNumb(int curr, int bef){
         if(Counted.GetComponent<Animation>().isPlaying)
             Counted.GetComponent<Animation>().Stop();
@@ -54,6 +64,7 @@ public class GameMgr : MonoBehaviour
     public void Clear(){
         MessageMgr.inst.Stop();
         Initialize();
+        RefreshTiles();
     }
     private void SaveScore(){
         
@@ -89,18 +100,20 @@ public class GameMgr : MonoBehaviour
     private void Awake(){
         if(inst == null) inst = this;
         else if(inst != this) Destroy(gameObject);
-        Initialize();
+        Initialize(); CreateTiles();
     }
 
     // 조작 관리
     private void Update(){
+        if(OptionMgr.isOpened) return;
         if(GameState == State.NONE){
             if(Input.GetMouseButton(0)){
+                //RefreshTiles();
                 MessageMgr.inst.CountDown();
             }
         } // 게임 대기
         else if(GameState == State.PLAY){
-            TimeSpan curr = DateTime.Now-dateTime;
+            TimeSpan curr = DateTime.Now-dateTime; // delayed time check
             showTime.text = curr.ToString().Substring(3,curr.ToString().Length-6);
         } // 게임 진행 , 시간 기록, 버튼 클릭
         else if(GameState == State.OPTION){} // 옵션

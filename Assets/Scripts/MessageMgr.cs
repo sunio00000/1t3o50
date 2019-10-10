@@ -42,5 +42,6 @@ public class MessageMgr : MonoBehaviour
             end+=0.1f;
             yield return new WaitForSeconds(0.1f);
         }
+        msg.text = "Start.";
     }
 }

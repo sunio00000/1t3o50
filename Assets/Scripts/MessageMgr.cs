@@ -15,6 +15,8 @@ public class MessageMgr : MonoBehaviour
     public Text msg; public GameObject go;
     public static bool isOn = false;
     public void CountDown(){
+        if(isOn) return;
+        isOn= true;
         StartCoroutine(countDown());
     }
     private IEnumerator countDown(){
@@ -25,6 +27,7 @@ public class MessageMgr : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         GameMgr.GameState = State.PLAY;
+        isOn = false;
         go.SetActive(false);    
         GameMgr.dateTime = DateTime.Now;
         yield return null;

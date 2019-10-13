@@ -12,7 +12,7 @@ public class OptionMgr : MonoBehaviour
     public static bool isOpened;
     public static DateTime openTime, closeTime;
     public static TimeSpan acumTime;
-    void Awake()
+    void Start()
     {
         openTime = closeTime = DateTime.Now;
         acumTime = closeTime-openTime;
@@ -20,6 +20,7 @@ public class OptionMgr : MonoBehaviour
         LeaderBoard.onClick.AddListener(delegate(){Open(gLeaderBoard);});
         Setting.onClick.AddListener(delegate(){Open(gSetting);});
         Post.onClick.AddListener(delegate(){Open(gPost);});
+        gLeaderBoard.GetComponent<LeaderBoard>().ReadFromFile();
         //Secret.onClick.AddListener(delegate(){Open("Secret");});
     }
 
@@ -34,7 +35,7 @@ public class OptionMgr : MonoBehaviour
         //Save();
         isOpened = false;
         closeTime = DateTime.Now;
-        Debug.Log(Delay());
+        acumTime = Delay();
         currOption.SetActive(false);
     }
 

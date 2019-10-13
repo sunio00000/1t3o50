@@ -10,7 +10,6 @@ public class FileMgr : MonoBehaviour
         path = Application.dataPath+"/Users";
     }
     public static void CreateFile(string filePath){
-        Debug.Log("create File :: " + filePath);
         if(!ExistFile(path)) Directory.CreateDirectory(path);
         if(File.Exists(filePath)) return;
         else File.CreateText(filePath);
@@ -21,7 +20,7 @@ public class FileMgr : MonoBehaviour
         else return false;
     }
 
-    public static void Write(string filePath, params string[] content){
+    public static void Write(string filePath, List<string> content){
         CreateFile(filePath);
         string contents="";
         foreach(var value in content) contents+= value+"\n"; 
@@ -31,7 +30,8 @@ public class FileMgr : MonoBehaviour
     public static List<string> Read(string filePath){
         CreateFile(filePath);
         string reads = File.ReadAllText(filePath);
-        List<string> readDatas = new List<string>(reads.Split('\n'));        
+        List<string> readDatas = new List<string>(reads.Split('\n'));
+        readDatas.Remove("");
         return readDatas;
     }
 }

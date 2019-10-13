@@ -16,12 +16,13 @@ public class GameMgr : MonoBehaviour
     public static GameMgr inst;
 
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
-    public const int MAX =5, endValue = 11;
+    public const int MAX =5, endValue = 10;
     private const float PAD = 155.0f;
     public GameObject btn, gameView, Current, Counted;
     public Text showTime;
     public static int currNum;
     public static State GameState;
+    public string recentRecord;
     private string time; // 시작시간, 걸린시간, ...
     public static DateTime dateTime,currTime;
     public static TimeSpan reserveTime;
@@ -64,11 +65,15 @@ public class GameMgr : MonoBehaviour
 
     public void Clear(){
         MessageMgr.inst.Stop();
+        SaveScore();
         Initialize();
         RefreshTiles();
     }
     private void SaveScore(){
-        
+        List<string> scores = new List<string>(FileMgr.Read(LeaderBoard.filePath));
+        scores.Add(time); scores.Sort();
+        recentRecord = time;
+        FileMgr.Write(LeaderBoard.filePath, scores);
     }
     private char ConvertIntToChar(int i){
         return (char)(i+48);
@@ -98,6 +103,9 @@ public class GameMgr : MonoBehaviour
         tr.GetComponent<Normal>().myNum = num;
     }
 
+    public string TimeToString(TimeSpan ts){
+        return ts.ToString().Substring(3,ts.ToString().Length-6);
+    }
     private void Awake(){
         if(inst == null) inst = this;
         else if(inst != this) Destroy(gameObject);
@@ -107,17 +115,16 @@ public class GameMgr : MonoBehaviour
     // 조작 관리
     private void Update(){
         if(OptionMgr.isOpened) return;
-        if(GameState == State.NONE){
-            if(Input.GetMouseButton(0)){
-                //RefreshTiles();
-                MessageMgr.inst.CountDown();
-            }
-        } // 게임 대기
+        if(GameState == State.NONE){} // 게임 대기
         else if(GameState == State.PLAY){
-            TimeSpan curr = (DateTime.Now-dateTime).Subtract(OptionMgr.Delay()); // delayed time check
-            showTime.text = curr.ToString().Substring(3,curr.ToString().Length-6);
+            TimeSpan curr = (DateTime.Now-dateTime).Subtract(OptionMgr.acumTime); // delayed time check
+            time = showTime.text = TimeToString(curr);
         } // 게임 진행 , 시간 기록, 버튼 클릭
         else if(GameState == State.OPTION){} // 옵션
         else if(GameState ==State.CLEAR){} // 옵션2
+    }
+
+    public void GameStart(){
+        MessageMgr.inst.CountDown();
     }
 }

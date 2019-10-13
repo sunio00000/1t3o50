@@ -55,18 +55,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Resources\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_CreateWindowShareLink.cs" />
-     <Compile Include="Assets\Resources\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_DestroyWindow.cs" />
-     <Compile Include="Assets\Resources\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_GraphicsManager.cs" />
-     <Compile Include="Assets\Resources\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_NavigationInformation.cs" />
-     <Compile Include="Assets\Resources\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_SceneNavigation.cs" />
-     <Compile Include="Assets\Resources\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_SoundManager.cs" />
+     <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_CreateWindowShareLink.cs" />
+     <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_DestroyWindow.cs" />
+     <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_GraphicsManager.cs" />
+     <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_NavigationInformation.cs" />
+     <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_SceneNavigation.cs" />
+     <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_SoundManager.cs" />
      <Compile Include="Assets\Scripts\FileMgr.cs" />
      <Compile Include="Assets\Scripts\GameMgr.cs" />
+     <Compile Include="Assets\Scripts\LeaderBoard.cs" />
      <Compile Include="Assets\Scripts\MessageMgr.cs" />
      <Compile Include="Assets\Scripts\Normal.cs" />
      <Compile Include="Assets\Scripts\NumberMgr.cs" />
      <Compile Include="Assets\Scripts\OptionMgr.cs" />
+     <None Include="Assets\Users\LeaderBoard.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/Sunio/Desktop/Project/ThreeSixNine/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

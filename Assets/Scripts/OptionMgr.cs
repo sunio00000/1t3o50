@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 public class OptionMgr : MonoBehaviour
 {
     public Button LeaderBoard, Setting, Secret, Post;
@@ -9,8 +10,12 @@ public class OptionMgr : MonoBehaviour
     private Button ClosePanel;
     private GameObject currOption;
     public static bool isOpened;
+    public static DateTime openTime, closeTime;
+    public static TimeSpan acumTime;
     void Awake()
     {
+        openTime = closeTime = DateTime.Now;
+        acumTime = closeTime-openTime;
         isOpened = false;
         LeaderBoard.onClick.AddListener(delegate(){Open(gLeaderBoard);});
         Setting.onClick.AddListener(delegate(){Open(gSetting);});
@@ -20,7 +25,7 @@ public class OptionMgr : MonoBehaviour
 
     private void Open(GameObject go){
         if(isOpened) return;
-        //Load();
+        openTime = DateTime.Now;
         isOpened = true;
         currOption = go;
         go.SetActive(true);
@@ -28,6 +33,12 @@ public class OptionMgr : MonoBehaviour
     public void Close(){
         //Save();
         isOpened = false;
+        closeTime = DateTime.Now;
+        Debug.Log(Delay());
         currOption.SetActive(false);
+    }
+
+    public static TimeSpan Delay(){
+        return  acumTime.Add(closeTime - openTime);
     }
 }

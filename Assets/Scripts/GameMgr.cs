@@ -24,6 +24,7 @@ public class GameMgr : MonoBehaviour
     public static State GameState;
     private string time; // 시작시간, 걸린시간, ...
     public static DateTime dateTime,currTime;
+    public static TimeSpan reserveTime;
     // (x,y) 좌상단부터 시작.
     public void Initialize(){
         currNum = 1;
@@ -113,7 +114,7 @@ public class GameMgr : MonoBehaviour
             }
         } // 게임 대기
         else if(GameState == State.PLAY){
-            TimeSpan curr = DateTime.Now-dateTime; // delayed time check
+            TimeSpan curr = (DateTime.Now-dateTime).Subtract(OptionMgr.Delay()); // delayed time check
             showTime.text = curr.ToString().Substring(3,curr.ToString().Length-6);
         } // 게임 진행 , 시간 기록, 버튼 클릭
         else if(GameState == State.OPTION){} // 옵션

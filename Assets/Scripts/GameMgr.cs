@@ -16,7 +16,7 @@ public class GameMgr : MonoBehaviour
     public static GameMgr inst;
 
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
-    public const int MAX =5, endValue = 10;
+    public int MAX =5, endValue = 10;
     private const float PAD = 155.0f;
     public GameObject btn, gameView, Current, Counted;
     public Text showTime;
@@ -50,6 +50,10 @@ public class GameMgr : MonoBehaviour
         for(int child=0; child<parent.childCount;++child){
             SetNumber(parent.GetChild(child),1,26);
         }
+    }
+
+    public void NormalBreakSound(){
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     public void SetViewNumb(int curr, int bef){

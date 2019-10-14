@@ -27,7 +27,8 @@ public class Normal : NumberMgr
     protected override  void FadeIn(){}
     protected override  void FadeOut(){}
     protected override  void NewNumber(){
-        if(GameMgr.currNum == GameMgr.endValue) GameMgr.inst.Clear();
+        GameMgr.inst.NormalBreakSound();
+        if(GameMgr.currNum == GameMgr.inst.endValue) GameMgr.inst.Clear();
         else{
             GameMgr.currNum++;
             GameMgr.inst.SetViewNumb(GameMgr.currNum, GameMgr.currNum-1);

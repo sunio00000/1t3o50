@@ -1,5 +1,5 @@
 # 1to50 new Version
-### [191015] (tier system link leaderboard, user status)
+### [191015] (tier system link leaderboard, user status) / (background) / (broke effect)
 ### [191014] add break Sound, Start Scene, LeaderBoard ,  sry bout design shit.
 ![5](https://user-images.githubusercontent.com/26760693/66756697-877be800-eed5-11e9-978e-ac9a0b8aae37.gif)
 ### [191013] File Manage(.txt) write my score

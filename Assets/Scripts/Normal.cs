@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 
 public class Normal : NumberMgr
 {
+    private const int BrokeEvent=0, MissEvent=1;
     protected override void Appear(){}
     protected override void Disappear(){    
         if(GameMgr.GameState == State.PLAY){
             if(myNum == GameMgr.currNum) NewNumber();
             else if(GameMgr.currNum < 10){
                 if(isTSN && GameMgr.IsTSN((char)(GameMgr.currNum+48))) NewNumber();
+                else MissNumber();
             }
             else {
                 if(isTSN && GameMgr.IsTSN((char)((GameMgr.currNum%10)+48))) NewNumber();
                 else if(isTSN && GameMgr.IsTSN((char)((GameMgr.currNum/10)+48))) NewNumber();
+                else MissNumber();
             } 
         }
     }
@@ -28,17 +32,31 @@ public class Normal : NumberMgr
     protected override  void FadeOut(){}
     protected override  void NewNumber(){
         GameMgr.inst.NormalBreakSound();
-        if(GameMgr.currNum == GameMgr.inst.endValue) GameMgr.inst.Clear();
+        if(GameMgr.currNum == GameMgr.inst.endValue) {
+            GameMgr.inst.Clear();  
+        }
         else{
             GameMgr.currNum++;
             GameMgr.inst.SetViewNumb(GameMgr.currNum, GameMgr.currNum-1);
-            GameMgr.SetNumber(transform,26,51);
-            transform.GetComponent<Image>().color = Color.clear;
-            transform.GetChild(0).GetComponent<Text>().color = Color.clear;
+            BrokeNumber();
+            // transform.GetComponent<Image>().color = Color.clear;
+            // transform.GetChild(0).GetComponent<Text>().color = Color.clear;
             //gameObject.SetActive(false);
             // 코루틴 -> Appear();
-            StartCoroutine(Term());
+            // StartCoroutine(Term());
         }
     }
     protected override  bool IsCorrect(){return true;}
+    public void BrokeNumber(){
+        gameObject.GetComponent<Animation>().Play("BreakNumber");
+    }
+    public void SetNumber(){
+        GameMgr.SetNumber(transform,26,51);
+    }
+    public void MissNumber(){
+        gameObject.GetComponent<Animation>().Play("MissNumber");
+        GameMgr.inst.TimeView.GetComponent<Animation>().Play("addTimeCuzMiss");
+        missTime += 0.2f;
+    }
+
 }

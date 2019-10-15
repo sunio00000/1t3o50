@@ -20,8 +20,8 @@ public class MessageMgr : MonoBehaviour
         StartCoroutine(countDown());
     }
     private IEnumerator countDown(){
-        float start =0.0f;
-        while(start <3.0f){
+        float start =1.0f;
+        while(start <4.0f){
             msg.text = ((int)start).ToString();
             start += 0.1f;
             yield return new WaitForSeconds(0.1f);
@@ -41,10 +41,10 @@ public class MessageMgr : MonoBehaviour
     private IEnumerator Clear(){
         float end = 0.0f;
         msg.text = "Clear.";
-        while(end<1.0f){
+        while(end<1.5f){
             end+=0.1f;
             yield return new WaitForSeconds(0.1f);
         }
-        msg.text = "Start.";
+        msg.text = "Press\nSTART";
     }
 }

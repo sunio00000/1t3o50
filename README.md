@@ -1,5 +1,8 @@
 # 1to50 new Version
-### [191015] (tier system link leaderboard, user status) / (background) / (broke effect)
+### [Expect] (current Nunber Animation modify) / (Add Mob) / (google play console) / (preference)
+***
+### [191015] Add broke/miss Block animation, Block background, user stat panels, popup time when block miss 
+![6](https://user-images.githubusercontent.com/26760693/66844048-98e1f480-efa8-11e9-8451-9768acc76550.gif)
 ### [191014] add break Sound, Start Scene, LeaderBoard ,  sry bout design shit.
 ![5](https://user-images.githubusercontent.com/26760693/66756697-877be800-eed5-11e9-978e-ac9a0b8aae37.gif)
 ### [191013] File Manage(.txt) write my score

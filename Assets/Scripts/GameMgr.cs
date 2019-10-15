@@ -18,7 +18,7 @@ public class GameMgr : MonoBehaviour
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
     public int MAX =5, endValue = 10;
     private const float PAD = 155.0f;
-    public GameObject btn, gameView, Current, Counted;
+    public GameObject btn, gameView, Current, Counted, TimeView;
     public Text showTime;
     public static int currNum;
     public static State GameState;
@@ -40,7 +40,7 @@ public class GameMgr : MonoBehaviour
                 Transform tr = Instantiate(btn).transform;
                 tr.name = ((x+1) + y*MAX).ToString();
                 tr.SetParent(gameView.transform);
-                tr.GetComponent<RectTransform>().anchoredPosition = new Vector3(x*PAD, -y*PAD,0);
+                tr.GetComponent<RectTransform>().anchoredPosition = new Vector3(-305.0f + x*PAD, 305.0f-y*PAD,0);
                 SetNumber( tr,1,26);
             }
         }
@@ -121,7 +121,9 @@ public class GameMgr : MonoBehaviour
         if(OptionMgr.isOpened) return;
         if(GameState == State.NONE){} // 게임 대기
         else if(GameState == State.PLAY){
-            TimeSpan curr = (DateTime.Now-dateTime).Subtract(OptionMgr.acumTime); // delayed time check
+            TimeSpan curr = (DateTime.Now-dateTime)
+                                        .Subtract(OptionMgr.acumTime) // delayed
+                                        .Add(NumberMgr.GetMissTime()); // miss block
             time = showTime.text = TimeToString(curr);
         } // 게임 진행 , 시간 기록, 버튼 클릭
         else if(GameState == State.OPTION){} // 옵션

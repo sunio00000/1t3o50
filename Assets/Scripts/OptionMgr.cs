@@ -26,6 +26,7 @@ public class OptionMgr : MonoBehaviour
 
     private void Open(GameObject go){
         if(isOpened) return;
+        GameMgr.inst.OnClick();
         openTime = DateTime.Now;
         isOpened = true;
         currOption = go;
@@ -34,6 +35,7 @@ public class OptionMgr : MonoBehaviour
     public void Close(){
         //Save();
         isOpened = false;
+        GameMgr.inst.OnClick();
         closeTime = DateTime.Now;
         acumTime = Delay();
         currOption.SetActive(false);

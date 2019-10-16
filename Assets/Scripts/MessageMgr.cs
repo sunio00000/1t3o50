@@ -46,5 +46,6 @@ public class MessageMgr : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         msg.text = "Press\nSTART";
+        GameMgr.inst.time = "00:00.0000";
     }
 }

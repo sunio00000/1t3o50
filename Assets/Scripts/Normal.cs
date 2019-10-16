@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class Normal : NumberMgr
 {
+    public bool isBreaking = false;
     private const int BrokeEvent=0, MissEvent=1;
     protected override void Appear(){}
-    protected override void Disappear(){    
+    protected override void Disappear(){
         if(GameMgr.GameState == State.PLAY){
+            if(isBreaking) return;
             if(myNum == GameMgr.currNum) NewNumber();
             else if(GameMgr.currNum < 10){
                 if(isTSN && GameMgr.IsTSN((char)(GameMgr.currNum+48))) NewNumber();
@@ -24,7 +26,7 @@ public class Normal : NumberMgr
     }
     private IEnumerator Term(){
         yield return new WaitForSeconds(0.5f);
-        //애니메이션으로 대체
+        //?��?��메이?��?���? ???�?
         transform.GetComponent<Image>().color = Color.white;
         transform.GetChild(0).GetComponent<Text>().color = Color.black;
     }
@@ -42,7 +44,7 @@ public class Normal : NumberMgr
             // transform.GetComponent<Image>().color = Color.clear;
             // transform.GetChild(0).GetComponent<Text>().color = Color.clear;
             //gameObject.SetActive(false);
-            // 코루틴 -> Appear();
+            // 코루?�� -> Appear();
             // StartCoroutine(Term());
         }
     }
@@ -54,6 +56,7 @@ public class Normal : NumberMgr
         GameMgr.SetNumber(transform,26,51);
     }
     public void MissNumber(){
+        GameMgr.inst.MissSound();
         gameObject.GetComponent<Animation>().Play("MissNumber");
         GameMgr.inst.TimeView.GetComponent<Animation>().Play("addTimeCuzMiss");
         missTime += 0.2f;

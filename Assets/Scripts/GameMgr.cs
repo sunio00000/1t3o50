@@ -13,6 +13,7 @@ public enum State{
 
 public class GameMgr : MonoBehaviour
 {
+    public AudioSource audioMiss, btnOnClick;
     public static GameMgr inst;
 
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
@@ -23,14 +24,13 @@ public class GameMgr : MonoBehaviour
     public static int currNum;
     public static State GameState;
     public string recentRecord;
-    private string time; // 시작시간, 걸린시간, ...
+    public string time; // 시작시간, 걸린시간, ...
     public static DateTime dateTime,currTime;
     public static TimeSpan reserveTime;
     // (x,y) 좌상단부터 시작.
     public void Initialize(){
         currNum = 1;
         GameState = State.NONE;
-        time = "00:00.0000";
         showTime.text = time;
         IsExist.Clear();
     }
@@ -52,6 +52,12 @@ public class GameMgr : MonoBehaviour
         }
     }
 
+    public void OnClick(){
+        btnOnClick.Play();
+    }
+    public void MissSound(){
+        audioMiss.Play();
+    }
     public void NormalBreakSound(){
         gameObject.GetComponent<AudioSource>().Play();
     }
@@ -92,17 +98,25 @@ public class GameMgr : MonoBehaviour
         if(num.ToString().Length==1){
             if(IsTSN(num.ToString()[0])) {
                 tr.GetChild(0).GetComponent<Text>().text = "★";
+                tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
-            else tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+            else {
+                tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+                tr.GetChild(0).GetComponent<Text>().color = new Color(0.3f,0.3f,0.3f,1);
+            }
 
         }
         else if(num.ToString().Length==2){
             if(IsTSN(num.ToString()[0]) || IsTSN(num.ToString()[1])) {
-                tr.GetChild(0).GetComponent<Text>().text = "★";
+                tr.GetChild(0).GetComponent<Text>().text ="★";
+                tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
-            else tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+            else{
+                tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+                tr.GetChild(0).GetComponent<Text>().color = new Color(0.3f,0.3f,0.3f,1);
+            } 
         }
         tr.GetComponent<Normal>().myNum = num;
     }
@@ -113,6 +127,7 @@ public class GameMgr : MonoBehaviour
     private void Awake(){
         if(inst == null) inst = this;
         else if(inst != this) Destroy(gameObject);
+        time = "00:00.0000";
         Initialize(); CreateTiles();
     }
 

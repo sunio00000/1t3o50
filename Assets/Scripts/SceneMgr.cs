@@ -10,6 +10,7 @@ public class SceneMgr : MonoBehaviour{
     }
 
     public void StartGame(){
+        GameMgr.inst.OnClick();
         SceneManager.LoadScene("MainScene");
     }
 }

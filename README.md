@@ -1,9 +1,10 @@
 # 1to50 new Version
-### [Expect] (current Nunber Animation modify) / (Add Mob) / (google play console) / (preference)
+### [Expect] (Add Mob) / (google play console) / (preference)
 ***
+### [191016] Bug Fixed(each Number can occured error. when touched above two times), current Number Animation, add effect Sound 
 ### [191015] Add broke/miss Block animation, Block background, user stat panels, popup time when block miss 
 ![6](https://user-images.githubusercontent.com/26760693/66844048-98e1f480-efa8-11e9-8451-9768acc76550.gif)
-### [191014] add break Sound, Start Scene, LeaderBoard ,  sry bout design shit.
+### [191014] add break Sound, Start Scene, LeaderBoard ,  sry bout design
 ![5](https://user-images.githubusercontent.com/26760693/66756697-877be800-eed5-11e9-978e-ac9a0b8aae37.gif)
 ### [191013] File Manage(.txt) write my score
 ### [191011] add Resources, apply to ui

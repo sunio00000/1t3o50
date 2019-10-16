@@ -2,9 +2,9 @@
 ### [Expect] (Add Mob) / (google play console) / (preference)
 ***
 ### [191016]
-+Bug Fixed(each Number can occured error. when touched above two times)
-+current Number Animation
-+add effect Sound 
++ Bug Fixed(each Number can occured error. when touched above two times)
++ current Number Animation
++ add effect Sound 
 ### [191015] Add broke/miss Block animation, Block background, user stat panels, popup time when block miss 
 ![6](https://user-images.githubusercontent.com/26760693/66844048-98e1f480-efa8-11e9-8451-9768acc76550.gif)
 ### [191014] add break Sound, Start Scene, LeaderBoard ,  sry bout design

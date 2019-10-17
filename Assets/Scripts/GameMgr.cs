@@ -103,7 +103,7 @@ public class GameMgr : MonoBehaviour
             }
             else {
                 tr.GetChild(0).GetComponent<Text>().text = num.ToString();
-                tr.GetChild(0).GetComponent<Text>().color = new Color(0.3f,0.3f,0.3f,1);
+                tr.GetChild(0).GetComponent<Text>().color = new Color(0.4f,0.4f,0.4f,1);
             }
 
         }
@@ -115,7 +115,7 @@ public class GameMgr : MonoBehaviour
             }
             else{
                 tr.GetChild(0).GetComponent<Text>().text = num.ToString();
-                tr.GetChild(0).GetComponent<Text>().color = new Color(0.3f,0.3f,0.3f,1);
+                tr.GetChild(0).GetComponent<Text>().color = new Color(0.4f,0.4f,0.4f,1);
             } 
         }
         tr.GetComponent<Normal>().myNum = num;

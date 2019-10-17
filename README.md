@@ -1,6 +1,11 @@
 # 1to50 new Version
-### [Expect] (Add Mob) / (google play console) / (preference)
+### [Expect]  (google play console) / (preference)
 ***
+### [191017]
++ Platform Change (Window > Android)
++ Attach AdMob Test. 
+
+![admob](https://user-images.githubusercontent.com/26760693/67017059-2271fd80-f134-11e9-9a68-f226818a7f2a.png)
 ### [191016]
 + Bug Fixed(each Number can occured error. when touched above two times)
 + current Number Animation

@@ -1,6 +1,8 @@
 # 1to50 new Version
 ### [Expect]  (google play console) / (preference) / (gamePlay Bug -don t stop Time) / (Start Scene Panel) / (LeaderBoard)
 ***
+### [191021]
++ Google Play Game Service Login intergration (GPGS v0.9.64)
 ### [191017]
 + Platform Change (Window > Android)
 + Attach AdMob Test. 

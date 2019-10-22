@@ -1,6 +1,11 @@
 # 1to50 new Version
-### [Expect]  (google play console) / (preference) / (gamePlay Bug -don t stop Time) / (Start Scene Panel) / (LeaderBoard)
+### [Expect]   / (preference) / (gamePlay Bug -don t stop Time) / (Start Scene Panel) / (UI)
 ***
+### [191022]
++ GPGS + AdMob
++ Screen 16:9 Portrait Pinned.
++ Create GameController (account, start to end)
++ LeaderBoard
 ### [191021]
 + Google Play Game Service Login intergration (GPGS v0.9.64)
 ### [191017]
@@ -14,8 +19,7 @@
 + add effect Sound 
 ### [191015] 
 + Add broke/miss Block animation
-+ Block background
-+ user stat panels
++ Block backgroundca-app-pub-3940256099942544~3347511713
 + popup time when block miss 
 
 ![6](https://user-images.githubusercontent.com/26760693/66844048-98e1f480-efa8-11e9-8451-9768acc76550.gif)

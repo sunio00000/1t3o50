@@ -23,7 +23,7 @@ public class GooglePlay : MonoBehaviour
     void Start()
     {
         LoginBtn.onClick.AddListener(OnBtnLoginClicked);
-        //doAutoLogin();
+        doAutoLogin();
     }
 
     public void doAutoLogin(){

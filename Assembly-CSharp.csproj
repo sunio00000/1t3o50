@@ -44,58 +44,7 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>     <Compile Include="Assets\GoogleMobileAds\Api\AdapterStatus.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\AdErrorEventArgs.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\AdFailedToLoadEventArgs.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\AdLoader.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\AdPosition.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\AdRequest.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\AdSize.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\BannerView.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\CustomNativeEventArgs.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\CustomNativeTemplateAd.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\Gender.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\InitializationStatus.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\InterstitialAd.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\Mediation\MediationExtras.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\MobileAds.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\Reward.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\RewardBasedVideoAd.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\RewardedAd.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Api\ServerSideVerificationOptions.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\DummyClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\IAdLoaderClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\IBannerClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\ICustomNativeTemplateClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\IInitializationStatusClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\IInterstitialClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\IMobileAdsClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\IRewardBasedVideoAdClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\IRewardedAdClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\MobileAdsEventExecutor.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\RewardedAdDummyClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Common\Utils.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AdLoaderClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\BannerClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\CustomNativeTemplateClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\InitializationStatusClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\InterstitialClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\MobileAdsClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\RewardBasedVideoAdClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\RewardedAdClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\Android\Utils.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\GoogleMobileAdsClientFactory.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\AdLoaderClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\BannerClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\CustomNativeTemplateClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Externs.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\InitializationStatusClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\InterstitialClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MobileAdsClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MonoPInvokeCallbackAttribute.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\RewardBasedVideoAdClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\RewardedAdClient.cs" />
-     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Utils.cs" />
+  <ItemGroup>     <Compile Include="Assets\GPGSIds.cs" />
      <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_CreateWindowShareLink.cs" />
      <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_DestroyWindow.cs" />
      <Compile Include="Assets\Import\Mobile Game GUI Vector Pack\Mobile Game GUI Vector Pack\DEMO_Scripts\DEMO_GraphicsManager.cs" />
@@ -105,6 +54,7 @@
      <Compile Include="Assets\Scripts\AdMobMgr.cs" />
      <Compile Include="Assets\Scripts\FileMgr.cs" />
      <Compile Include="Assets\Scripts\GameMgr.cs" />
+     <Compile Include="Assets\Scripts\GooglePlay.cs" />
      <Compile Include="Assets\Scripts\LeaderBoard.cs" />
      <Compile Include="Assets\Scripts\MessageMgr.cs" />
      <Compile Include="Assets\Scripts\Normal.cs" />
@@ -139,6 +89,9 @@
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>C:/Users/Sunio/Desktop/Project/ThreeSixNine/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+ <HintPath>C:/Users/Sunio/Desktop/Project/ThreeSixNine/Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
  <HintPath>C:/Users/Sunio/Desktop/Project/ThreeSixNine/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
@@ -147,9 +100,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/Sunio/Desktop/Project/ThreeSixNine/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
- <HintPath>C:/Users/Sunio/Desktop/Project/ThreeSixNine/Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/2019.2.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

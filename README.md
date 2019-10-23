@@ -1,6 +1,15 @@
 # 1to50 new Version
-### [Expect]   / (preference) / (gamePlay Bug -don t stop Time) / (Start Scene Panel) / (UI)
+### [Expect] 
++ File Manager error occured 
++ preference 
++ gamePlay Bug -don t stop Time mby related fileMgr
++ Start Scene Panel
++ Imply UI
 ***
+### [191023]
++ UI reDesign
++ Expression learderboard score (.xxx)
++ Add UI resource for preference
 ### [191022]
 + GPGS + AdMob
 + Screen 16:9 Portrait Pinned.

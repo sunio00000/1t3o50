@@ -18,7 +18,7 @@ public class GameMgr : MonoBehaviour
 
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
     public int MAX =5, endValue = 10;
-    private const float PAD = 155.0f;
+    private const float PAD = 157.0f;
     public GameObject btn, gameView, Current, Counted, TimeView;
     public Text showTime;
     public static int currNum;
@@ -40,7 +40,7 @@ public class GameMgr : MonoBehaviour
                 Transform tr = Instantiate(btn).transform;
                 tr.name = ((x+1) + y*MAX).ToString();
                 tr.SetParent(gameView.transform);
-                tr.GetComponent<RectTransform>().anchoredPosition = new Vector3(-305.0f + x*PAD, 305.0f-y*PAD,0);
+                tr.GetComponent<RectTransform>().anchoredPosition = new Vector3(-313.0f + x*PAD, 317.0f-y*PAD,0);
                 SetNumber( tr,1,26);
             }
         }
@@ -131,7 +131,7 @@ public class GameMgr : MonoBehaviour
         Initialize(); CreateTiles();
     }
 
-    // 조작 관리
+    // 통합 시간관리.
     private void Update(){
         if(OptionMgr.isOpened) return;
         if(GameState == State.NONE){} // 게임 대기

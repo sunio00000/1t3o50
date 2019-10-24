@@ -4,8 +4,15 @@ using GoogleMobileAds.Api;
  
 public class AdMobMgr : MonoBehaviour
 {
+    public static AdMobMgr instance;
     private BannerView bannerView;
  
+
+    public void Awake(){
+        if(instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
     public void Start()
     {
         #if UNITY_ANDROID

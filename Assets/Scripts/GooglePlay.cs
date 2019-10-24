@@ -11,7 +11,7 @@ public class GooglePlay : MonoBehaviour
     public RawImage myImage;
     public Button LoginBtn;
 
-    private bool WaitingForAuth= false;
+    private bool WaitingForAuth= false, IsSigned= false;
 
     void Awake()
     {
@@ -35,6 +35,7 @@ public class GooglePlay : MonoBehaviour
             WaitingForAuth = true;
 
             Social.localUser.Authenticate(authenticateCallback);
+            IsSigned = true;
         }
         else{
             myLog.text = "Login Fail\n";
@@ -43,7 +44,8 @@ public class GooglePlay : MonoBehaviour
 
     public void OnBtnLoginClicked(){
         myLog.text = "......";
-        StartCoroutine(AuthLoad());
+        if(!IsSigned) StartCoroutine(AuthLoad());
+        else OnBtnLogoutClicked();
         
     }
     public IEnumerator AuthLoad(){
@@ -51,6 +53,7 @@ public class GooglePlay : MonoBehaviour
             if(success){
                 Debug.Log(Social.localUser.userName);
                 myLog.text = "name: "+ Social.localUser.userName +"\n";
+                IsSigned = true;
             }
             else
             {
@@ -63,6 +66,7 @@ public class GooglePlay : MonoBehaviour
     public void OnBtnLogoutClicked(){
         ((PlayGamesPlatform)Social.Active).SignOut();
         myLog.text = "LogOut...";
+        IsSigned= false;
     }
 
     void authenticateCallback(bool success){

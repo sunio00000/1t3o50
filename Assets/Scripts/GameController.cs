@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour{
     public static GameController instance;
+    public GameObject OptionWindow, QuitRequestWindow;
+
     void Awake()
     {
         if(instance == null) instance = this;
@@ -35,9 +37,15 @@ public class GameController : MonoBehaviour{
         Social.ShowLeaderboardUI();
     }
     public void Option(){
-
+        OptionWindow.SetActive(true);
+    }
+    public void QuitRequest(){
+        QuitRequestWindow.SetActive(true);
     }
     public void Quit(){
         Application.Quit();
+    }
+    public void QuitCancel(){
+        QuitRequestWindow.SetActive(false);
     }
 }

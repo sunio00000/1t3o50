@@ -1,11 +1,14 @@
 # 1to50 new Version
-### [Expect] 
-+ File Manager error occured 
-+ preference 
+### [Expect]
++ File Manager error occured
++ preference
 + gamePlay Bug -don t stop Time mby related fileMgr
 + Start Scene Panel
 + Imply UI
 ***
+### [191024]
++ Something do...
+
 ### [191023]
 + UI reDesign
 + Expression learderboard score (.xxx)

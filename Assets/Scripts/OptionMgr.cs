@@ -19,7 +19,8 @@ public class OptionMgr : MonoBehaviour
         isOpened = false;
         LeaderBoard.onClick.AddListener(delegate(){Open(gLeaderBoard);});
         Setting.onClick.AddListener(delegate(){Open(gSetting);});
-        Post.onClick.AddListener(delegate(){Open(gPost);});
+        Setting.onClick.AddListener(delegate(){GameController.instance.Option();});
+        Post.onClick.AddListener(delegate(){GameController.instance.SoundOn();});
         gLeaderBoard.GetComponent<LeaderBoard>().ReadFromFile();
         //Secret.onClick.AddListener(delegate(){Open("Secret");});
     }

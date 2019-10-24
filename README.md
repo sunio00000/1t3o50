@@ -8,7 +8,6 @@
 ***
 ### [191024]
 + Something do...
-
 ### [191023]
 + UI reDesign
 + Expression learderboard score (.xxx)

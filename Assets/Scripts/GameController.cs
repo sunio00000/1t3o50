@@ -17,10 +17,7 @@ public class GameController : MonoBehaviour{
     {
         
     }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
+    // escape Manager lol
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)){
@@ -39,6 +36,9 @@ public class GameController : MonoBehaviour{
     public void Option(){
         OptionWindow.SetActive(true);
     }
+    public void OptionCancel(){
+        OptionWindow.SetActive(false);
+    }
     public void QuitRequest(){
         QuitRequestWindow.SetActive(true);
     }
@@ -47,5 +47,12 @@ public class GameController : MonoBehaviour{
     }
     public void QuitCancel(){
         QuitRequestWindow.SetActive(false);
+    }
+
+    public void SoundOff(){
+
+    }
+    public void SoundOn(){
+        
     }
 }

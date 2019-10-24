@@ -24,10 +24,10 @@ public class GameMgr : MonoBehaviour
     public static int currNum;
     public static State GameState;
     public string recentRecord;
-    public string time; // ì‹œì‘ì‹œê°„, ê±¸ë¦°ì‹œê°„, ...
+    public string time; // ???????????, °É¸°?????, ...
     public static DateTime dateTime,currTime;
     public static TimeSpan reserveTime;
-    // (x,y) ì¢Œìƒë‹¨ë¶€í„° ì‹œì‘.
+    // (x,y) ÁÂ»ó???????? ??????.
     public void Initialize(){
         currNum = 1;
         GameState = State.NONE;
@@ -97,7 +97,7 @@ public class GameMgr : MonoBehaviour
         IsExist[num] = true;
         if(num.ToString().Length==1){
             if(IsTSN(num.ToString()[0])) {
-                tr.GetChild(0).GetComponent<Text>().text = "â˜…";
+                tr.GetChild(0).GetComponent<Text>().text = "¡Ú";
                 tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
@@ -109,7 +109,7 @@ public class GameMgr : MonoBehaviour
         }
         else if(num.ToString().Length==2){
             if(IsTSN(num.ToString()[0]) || IsTSN(num.ToString()[1])) {
-                tr.GetChild(0).GetComponent<Text>().text ="â˜…";
+                tr.GetChild(0).GetComponent<Text>().text ="¡Ú";
                 tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
@@ -131,20 +131,19 @@ public class GameMgr : MonoBehaviour
         Initialize(); CreateTiles();
     }
 
-    // í†µí•© ì‹œê°„ê´€ë¦¬.
+    // ?????? ???°£?????.
     private void Update(){
         if(OptionMgr.isOpened) return;
-        if(GameState == State.NONE){} // ê²Œì„ ëŒ€ê¸°
+        if(GameState == State.NONE){} // °ÔÀÓ ?????
         else if(GameState == State.PLAY){
             TimeSpan curr = (DateTime.Now-dateTime)
                                         .Subtract(OptionMgr.acumTime) // delayed
                                         .Add(NumberMgr.GetMissTime()); // miss block
             time = showTime.text = TimeToString(curr);
-        } // ê²Œì„ ì§„í–‰ , ì‹œê°„ ê¸°ë¡, ë²„íŠ¼ í´ë¦­
-        else if(GameState == State.OPTION){} // ì˜µì…˜
-        else if(GameState ==State.CLEAR){} // ì˜µì…˜2
+        } // °ÔÀÓ ÁøÇà , ????? ±â·Ï, ¹öÆ° ?????
+        else if(GameState == State.OPTION){} // ??????
+        else if(GameState ==State.CLEAR){} // ??????2
     }
-
     public void GameStart(){
         MessageMgr.inst.CountDown();
     }

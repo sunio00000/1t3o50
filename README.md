@@ -1,7 +1,7 @@
 # 1to50 new Version
 ### [Expect]
 + File Manager error occured
-+ preference
++ preference(setting contents)
 + gamePlay Bug -don t stop Time mby related fileMgr
 + Start Scene Panel
 + Imply UI

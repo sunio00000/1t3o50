@@ -20,10 +20,10 @@ public class MessageMgr : MonoBehaviour
         StartCoroutine(countDown());
     }
     private IEnumerator countDown(){
-        float start =1.0f;
-        while(start <4.0f){
+        float start =3.99f;
+        while(start >1.0f){
             msg.text = ((int)start).ToString();
-            start += 0.1f;
+            start -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
         GameMgr.GameState = State.PLAY;
@@ -40,12 +40,12 @@ public class MessageMgr : MonoBehaviour
 
     private IEnumerator Clear(){
         float end = 0.0f;
-        msg.text = "Clear.";
+        msg.text = GameMgr.inst.time + " Clear.";
         while(end<1.5f){
             end+=0.1f;
             yield return new WaitForSeconds(0.1f);
         }
-        msg.text = "Press\nSTART";
+        msg.text = "START";
         GameMgr.inst.time = "00:00.0000";
     }
 }

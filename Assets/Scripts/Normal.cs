@@ -26,7 +26,7 @@ public class Normal : NumberMgr
     }
     private IEnumerator Term(){
         yield return new WaitForSeconds(0.5f);
-        //?��?��메이?��?���? ???�?
+        //?��?��메이?��?���?? ???�??
         transform.GetComponent<Image>().color = Color.white;
         transform.GetChild(0).GetComponent<Text>().color = Color.black;
     }

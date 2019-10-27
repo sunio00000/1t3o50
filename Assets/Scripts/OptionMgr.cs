@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 public class OptionMgr : MonoBehaviour
@@ -18,11 +19,11 @@ public class OptionMgr : MonoBehaviour
         openTime = closeTime = DateTime.Now;
         acumTime = closeTime-openTime;
         isOpened = false;
-        LeaderBoard.onClick.AddListener(delegate(){Open(gLeaderBoard);});
-        Setting.onClick.AddListener(delegate(){GameController.instance.Option();});
+//        LeaderBoard.onClick.AddListener(delegate(){Open(gLeaderBoard);});
+        Setting.onClick.AddListener(delegate(){SceneManager.LoadScene("StartScene"); GameMgr.GameState = State.NONE;});
         Post.onClick.AddListener(delegate(){GameController.instance.SoundSetState();});
         Post.onClick.AddListener(delegate(){SoundSprite(GameController.instance.sound);});
-        gLeaderBoard.GetComponent<LeaderBoard>().ReadFromFile();
+//        gLeaderBoard.GetComponent<LeaderBoard>().ReadFromFile();
         //Secret.onClick.AddListener(delegate(){Open("Secret");});
     }
 

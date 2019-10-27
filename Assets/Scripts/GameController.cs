@@ -25,12 +25,14 @@ public class GameController : MonoBehaviour{
     }
     public void QuitRequest(){
         QuitRequestWindow.SetActive(true);
+        GameMgr.GameState = State.QUIT;
     }
     public void Quit(){
         Application.Quit();
     }
     public void QuitCancel(){
         QuitRequestWindow.SetActive(false);
+        GameMgr.GameState = State.NONE;
     }
 
     public void SoundSetState(){

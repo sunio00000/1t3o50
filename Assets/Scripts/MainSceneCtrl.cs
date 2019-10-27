@@ -11,27 +11,28 @@ public class MainSceneCtrl : MonoBehaviour{
 
     void Update()
     {
-        if(Application.runInBackground == true){
+        if(Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu)){
             Time.timeScale  = 0.0f;
             PausePanel.SetActive(true);
             GameMgr.GameState= State.PAUSE;
         }
-
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            if(GameMgr.GameState == State.NONE){
-    // back     
-                SceneManager.LoadScene("StartScene");
-            }
-            else if(GameMgr.GameState == State.PLAY){
-    // pause
-                Time.timeScale = 0.0f;
-                PausePanel.SetActive(true);
-                GameMgr.GameState = State.PAUSE;
-            }
-            else if(GameMgr.GameState == State.PAUSE){
-                Time.timeScale = 1.0f;
-                PausePanel.SetActive(false);
-                GameMgr.GameState = State.PLAY;
+        else{
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                if(GameMgr.GameState == State.NONE){
+        // back     
+                    SceneManager.LoadScene("StartScene");
+                }
+                else if(GameMgr.GameState == State.PLAY){
+        // pause
+                    Time.timeScale = 0.0f;
+                    PausePanel.SetActive(true);
+                    GameMgr.GameState = State.PAUSE;
+                }
+                else if(GameMgr.GameState == State.PAUSE){
+                    Time.timeScale = 1.0f;
+                    PausePanel.SetActive(false);
+                    GameMgr.GameState = State.PLAY;
+                }
             }
         }
     }

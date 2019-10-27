@@ -9,6 +9,7 @@ public enum State{
     CLEAR,
     OPTION,
     PAUSE,
+    QUIT,
     Count
 }
 
@@ -19,7 +20,7 @@ public class GameMgr : MonoBehaviour
     public RawImage IdPicture;
     public Text GoogleId;
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
-    public int MAX =5, endValue = 10;
+    public int MAX =5, endValue = 25;
     private const float PAD = 157.0f;
     public GameObject btn, gameView, Current, Counted, TimeView;
     public Text showTime;
@@ -77,6 +78,7 @@ public class GameMgr : MonoBehaviour
 
     public void Clear(){
         MessageMgr.inst.Stop();
+        // time : 00:00.0000
         GooglePlay.instance.ReportToBoard(100);
         //SaveScore();
         Initialize();
@@ -93,6 +95,12 @@ public class GameMgr : MonoBehaviour
     }
     
     public static void SetNumber( Transform tr, int min , int max){
+        if(IsExist.Count >= GameMgr.inst.endValue){
+            tr.GetChild(0).GetComponent<Text>().text = "-";
+            tr.GetChild(0).GetComponent<Text>().color = Color.blue;
+            tr.GetComponent<Normal>().myNum = 10000;
+            return ;
+        }
         int num;
         do{
             num = UnityEngine.Random.Range(min,max);
@@ -100,25 +108,25 @@ public class GameMgr : MonoBehaviour
         IsExist[num] = true;
         if(num.ToString().Length==1){
             if(IsTSN(num.ToString()[0])) {
-                tr.GetChild(0).GetComponent<Text>().text = "#";
+                tr.GetChild(0).GetComponent<Text>().text = "¡Ú";
                 tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
             else {
                 tr.GetChild(0).GetComponent<Text>().text = num.ToString();
-                tr.GetChild(0).GetComponent<Text>().color = new Color(0.4f,0.4f,0.4f,1);
+                tr.GetChild(0).GetComponent<Text>().color = new Color(0.3f,0.3f,0.3f,1);
             }
 
         }
         else if(num.ToString().Length==2){
             if(IsTSN(num.ToString()[0]) || IsTSN(num.ToString()[1])) {
-                tr.GetChild(0).GetComponent<Text>().text ="#";
+                tr.GetChild(0).GetComponent<Text>().text ="¡Ú";
                 tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
             else{
                 tr.GetChild(0).GetComponent<Text>().text = num.ToString();
-                tr.GetChild(0).GetComponent<Text>().color = new Color(0.4f,0.4f,0.4f,1);
+                tr.GetChild(0).GetComponent<Text>().color = new Color(0.3f,0.3f,0.3f,1);
             } 
         }
         tr.GetComponent<Normal>().myNum = num;
@@ -149,7 +157,7 @@ public class GameMgr : MonoBehaviour
                                         .Subtract(OptionMgr.acumTime) // delayed
                                         .Add(NumberMgr.GetMissTime()); // miss block
             time = showTime.text = TimeToString(curr);
-        } // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ , ????? ï¿½ï¿½ï¿½, ï¿½ï¿½Æ° ?????
+        } // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ , ????? ï¿½ï¿½ï¿?, ï¿½ï¿½Æ° ?????
         else if(GameState == State.OPTION){} // ??????
         else if(GameState ==State.CLEAR){} // ??????2
     }

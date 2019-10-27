@@ -13,6 +13,7 @@
 + FileManage delete
 
 ![7](https://user-images.githubusercontent.com/26760693/67636521-d3d31900-f914-11e9-8569-9996d98d314b.gif)
+![8](https://user-images.githubusercontent.com/26760693/67636584-991db080-f915-11e9-8201-608f5446dc26.gif)
 ### [191025]
 + transfer key
 ### [191024]

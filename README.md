@@ -11,6 +11,8 @@
 + UI
 + Auth linking main
 + FileManage delete
+
+![7](https://user-images.githubusercontent.com/26760693/67636521-d3d31900-f914-11e9-8569-9996d98d314b.gif)
 ### [191025]
 + transfer key
 ### [191024]

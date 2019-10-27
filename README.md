@@ -1,10 +1,10 @@
 # 1to50 new Version
 ### [Expect]
-+ Login Picture Masking
++ Rank value parse
 + Main Logo
-+ preference(setting contents`)
 + Start Scene Panel
 + Imply UI
++ invite
 ***
 ### [191027]
 + GameState redefine

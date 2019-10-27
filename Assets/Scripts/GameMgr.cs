@@ -8,6 +8,7 @@ public enum State{
     PLAY,
     CLEAR,
     OPTION,
+    PAUSE,
     Count
 }
 
@@ -15,7 +16,8 @@ public class GameMgr : MonoBehaviour
 {
     public AudioSource audioMiss, btnOnClick;
     public static GameMgr inst;
-
+    public RawImage IdPicture;
+    public Text GoogleId;
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
     public int MAX =5, endValue = 10;
     private const float PAD = 157.0f;
@@ -24,10 +26,10 @@ public class GameMgr : MonoBehaviour
     public static int currNum;
     public static State GameState;
     public string recentRecord;
-    public string time; // ???????????, °É¸°?????, ...
+    public string time; // ???????????, ï¿½É¸ï¿½?????, ...
     public static DateTime dateTime,currTime;
     public static TimeSpan reserveTime;
-    // (x,y) ÁÂ»ó???????? ??????.
+    // (x,y) ï¿½Â»ï¿½???????? ??????.
     public void Initialize(){
         currNum = 1;
         GameState = State.NONE;
@@ -75,7 +77,8 @@ public class GameMgr : MonoBehaviour
 
     public void Clear(){
         MessageMgr.inst.Stop();
-        SaveScore();
+        GooglePlay.instance.ReportToBoard(100);
+        //SaveScore();
         Initialize();
         RefreshTiles();
     }
@@ -97,7 +100,7 @@ public class GameMgr : MonoBehaviour
         IsExist[num] = true;
         if(num.ToString().Length==1){
             if(IsTSN(num.ToString()[0])) {
-                tr.GetChild(0).GetComponent<Text>().text = "¡Ú";
+                tr.GetChild(0).GetComponent<Text>().text = "#";
                 tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
@@ -109,7 +112,7 @@ public class GameMgr : MonoBehaviour
         }
         else if(num.ToString().Length==2){
             if(IsTSN(num.ToString()[0]) || IsTSN(num.ToString()[1])) {
-                tr.GetChild(0).GetComponent<Text>().text ="¡Ú";
+                tr.GetChild(0).GetComponent<Text>().text ="#";
                 tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
@@ -131,16 +134,22 @@ public class GameMgr : MonoBehaviour
         Initialize(); CreateTiles();
     }
 
-    // ?????? ???°£?????.
+    private  void Start()
+    {
+        GoogleId.text = Social.localUser.userName;
+        IdPicture.texture = Social.localUser.image;
+    }
+
+    // ?????? ???ï¿½ï¿½?????.
     private void Update(){
         if(OptionMgr.isOpened) return;
-        if(GameState == State.NONE){} // °ÔÀÓ ?????
+        if(GameState == State.NONE){} // ï¿½ï¿½ï¿½ï¿½ ?????
         else if(GameState == State.PLAY){
             TimeSpan curr = (DateTime.Now-dateTime)
                                         .Subtract(OptionMgr.acumTime) // delayed
                                         .Add(NumberMgr.GetMissTime()); // miss block
             time = showTime.text = TimeToString(curr);
-        } // °ÔÀÓ ÁøÇà , ????? ±â·Ï, ¹öÆ° ?????
+        } // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ , ????? ï¿½ï¿½ï¿½, ï¿½ï¿½Æ° ?????
         else if(GameState == State.OPTION){} // ??????
         else if(GameState ==State.CLEAR){} // ??????2
     }

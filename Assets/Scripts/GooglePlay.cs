@@ -6,6 +6,8 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 public class GooglePlay : MonoBehaviour
 {
+    public static GooglePlay instance;
+
     public Text scoreText;
     public Text myLog;
     public RawImage myImage;
@@ -15,7 +17,10 @@ public class GooglePlay : MonoBehaviour
 
     void Awake()
     {
-        myLog.text = "Ready...";
+        if(instance == null) instance =this;
+        else if(instance != this) Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+        if(myLog != null) myLog.text = "Ready...";
         PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder().Build());
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
@@ -53,6 +58,7 @@ public class GooglePlay : MonoBehaviour
             if(success){
                 Debug.Log(Social.localUser.userName);
                 myLog.text = "name: "+ Social.localUser.userName +"\n";
+                StartCoroutine(UserPictureLoad());
                 IsSigned = true;
             }
             else
@@ -61,7 +67,7 @@ public class GooglePlay : MonoBehaviour
                 myLog.text=  "Login Fail\n";
             }
         });
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
     }
     public void OnBtnLogoutClicked(){
         ((PlayGamesPlatform)Social.Active).SignOut();
@@ -70,7 +76,6 @@ public class GooglePlay : MonoBehaviour
     }
 
     void authenticateCallback(bool success){
-        myLog.text= "Loading";
         if(success){
             myLog.text = "Welcome"+ Social.localUser.userName+"\n";
             StartCoroutine(UserPictureLoad());
@@ -80,7 +85,6 @@ public class GooglePlay : MonoBehaviour
         }
     }
     IEnumerator UserPictureLoad(){
-        myLog.text = "image Loading...";
         Texture2D pic = Social.localUser.image;
 
         while(pic == null){
@@ -89,8 +93,38 @@ public class GooglePlay : MonoBehaviour
         }
 
         myImage.texture = pic;
-        myLog.text = "image Create";
     }    
+    public void ReportToBoard(long score){
+        PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_1to50ver369, (bool success)=>{
+            if(success){
+
+            }
+            else{
+
+            }
+        });
+    }
+    public void ShowLeaderBoard(){
+        if(Social.localUser.authenticated == false){
+            Social.localUser.Authenticate((bool success)=>{
+                if(success){
+                    Social.ShowLeaderboardUI();
+                    return;
+                }
+                else{
+                    // auth identification needed.
+                    return;
+                }
+            });
+        }
+        PlayGamesPlatform.Instance.ShowLeaderboardUI();
+    }
+
+    public void UnlockAchievment(int score){
+        if(score >=100){
+            PlayGamesPlatform.Instance.ReportProgress(GPGSIds.leaderboard_1to50ver369, 100f, null);
+        }
+    }
     void Update()
     {
         

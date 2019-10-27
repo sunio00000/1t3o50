@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour{
     public static GameController instance;
     public GameObject OptionWindow, QuitRequestWindow;
-
+    public bool sound =true;
     void Awake()
     {
         if(instance == null) instance = this;
@@ -16,22 +16,6 @@ public class GameController : MonoBehaviour{
     void Start()
     {
         
-    }
-    // escape Manager lol
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            if(GameMgr.GameState == State.NONE){
-                // options
-            }
-            else if(GameMgr.GameState == State.PLAY){
-                // pause
-            }
-        }
-    }
-    
-    public void LeaderBoard(){
-        Social.ShowLeaderboardUI();
     }
     public void Option(){
         OptionWindow.SetActive(true);
@@ -49,10 +33,16 @@ public class GameController : MonoBehaviour{
         QuitRequestWindow.SetActive(false);
     }
 
-    public void SoundOff(){
+    public void SoundSetState(){
+        if(sound){
+            AudioListener.pause = true;
+            sound =false; 
 
-    }
-    public void SoundOn(){
-        
+        }
+        else{
+            AudioListener.pause = false;
+            sound =true;
+        }
+
     }
 }

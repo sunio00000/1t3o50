@@ -1,14 +1,18 @@
 # 1to50 new Version
 ### [Expect]
-+ File Manager error occured
-+ preference(setting contents)
-+ gamePlay Bug -don t stop Time mby related fileMgr
++ Login Picture Masking
++ Main Logo
++ preference(setting contents`)
 + Start Scene Panel
 + Imply UI
 ***
+### [191027]
++ GameState redefine
++ UI
++ Auth linking main
++ FileManage delete
 ### [191025]
 + transfer key
-+ 
 ### [191024]
 + Something do...
 ### [191023]

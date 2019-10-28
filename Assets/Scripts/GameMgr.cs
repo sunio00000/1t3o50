@@ -29,7 +29,7 @@ public class GameMgr : MonoBehaviour
     public string recentRecord;
     public string time; // ???????????, �ɸ�?????, ...
     public static DateTime dateTime,currTime;
-    public static TimeSpan reserveTime;
+    public static TimeSpan TakeTime;
     // (x,y) �»�???????? ??????.
     public void Initialize(){
         currNum = 1;
@@ -78,8 +78,8 @@ public class GameMgr : MonoBehaviour
 
     public void Clear(){
         MessageMgr.inst.Stop();
-        // time : 00:00.0000
-        GooglePlay.instance.ReportToBoard(100);
+        // time : 00:00.0000 type string
+        GooglePlay.instance.ReportToBoard(TakeTime.Milliseconds);
         //SaveScore();
         Initialize();
         RefreshTiles();
@@ -157,6 +157,7 @@ public class GameMgr : MonoBehaviour
                                         .Subtract(OptionMgr.acumTime) // delayed
                                         .Add(NumberMgr.GetMissTime()); // miss block
             time = showTime.text = TimeToString(curr);
+            TakeTime = curr;
         } // ���� ���� , ????? ���?, ��ư ?????
         else if(GameState == State.OPTION){} // ??????
         else if(GameState ==State.CLEAR){} // ??????2

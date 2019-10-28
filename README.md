@@ -6,6 +6,9 @@
 + Imply UI
 + invite
 ***
+### [191028]
++ RankMgr - myRank, myRankGradeImg, Rise and Fall
++ time value parsing
 ### [191027]
 + GameState redefine
 + UI

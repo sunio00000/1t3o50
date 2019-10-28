@@ -293,6 +293,7 @@
      <Compile Include="Assets\Scripts\NumberMgr.cs" />
      <Compile Include="Assets\Scripts\OptionMgr.cs" />
      <Compile Include="Assets\Scripts\PauseMgr.cs" />
+     <Compile Include="Assets\Scripts\RankMgr.cs" />
      <Compile Include="Assets\Scripts\SceneMgr.cs" />
      <None Include="Assets\Import\nhn_starfish\Example\Resources\data\Font_brown_36_00.txt" />
      <None Include="Assets\GooglePlayGames\Plugins\Android\GooglePlayGamesManifest.plugin\AndroidManifest.xml" />

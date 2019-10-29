@@ -27,7 +27,7 @@ public class GooglePlay : MonoBehaviour
     }
     void Start()
     {
-        doAutoLogin();
+        //doAutoLogin();
     }
 
     public void doAutoLogin(){
@@ -105,6 +105,7 @@ public class GooglePlay : MonoBehaviour
     }
     public void ShowLeaderBoard(){
         if(Social.localUser.authenticated == false){
+            return;
             Social.localUser.Authenticate((bool success)=>{
                 if(success){
                     Social.ShowLeaderboardUI();

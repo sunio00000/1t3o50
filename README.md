@@ -1,5 +1,6 @@
 # 1to50 new Version
 ### [Expect]
++ PUBLICING.....
 + Rank value parse
 + Main Logo
 + Start Scene Panel

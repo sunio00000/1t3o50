@@ -1,11 +1,9 @@
 # 1to50 new Version
 ### [Expect]
++ NumberView, TimeView Font Revise
 + PUBLICING.....
-+ Rank value parse
++ Rank value percentage
 + Main Logo
-+ Start Scene Panel
-+ Imply UI
-+ invite
 ***
 ### [191028]
 + RankMgr - myRank, myRankGradeImg, Rise and Fall

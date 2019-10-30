@@ -5,6 +5,11 @@
 + Rank value percentage
 + Main Logo
 ***
+### [191030]
++ main > login Scene button not working bug
++ leaderboard not showing bug
++ leaderboard show me odd value
++ Main LOGO
 ### [191028]
 + RankMgr - myRank, myRankGradeImg, Rise and Fall
 + time value parsing

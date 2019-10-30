@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 public class GooglePlay : MonoBehaviour
 {
     public static GooglePlay instance;
-
+    SceneMgr tmp;
     public Text scoreText;
     public Text myLog;
     public RawImage myImage;
@@ -21,6 +22,11 @@ public class GooglePlay : MonoBehaviour
         else if(instance != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
         if(myLog != null) myLog.text = "Ready...";
+        if(SceneManager.GetActiveScene().name == "StartScene")
+        {
+            tmp = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SceneMgr>();
+        }
+        LoginBtn.onClick.AddListener(OnBtnLoginClicked);
         PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder().Build());
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
@@ -55,22 +61,19 @@ public class GooglePlay : MonoBehaviour
     public IEnumerator AuthLoad(){
         Social.localUser.Authenticate((bool success) =>{
             if(success){
-                Debug.Log(Social.localUser.userName);
-                myLog.text = "name: "+ Social.localUser.userName +"\n";
-                StartCoroutine(UserPictureLoad());
+                tmp.Warnings("Login Successfully.", Color.green);
                 IsSigned = true;
             }
             else
             {
-                Debug.Log("Login Fail");
-                myLog.text=  "Login Fail\n";
+                tmp.Warnings("Login Failed.", Color.red);
             }
         });
         yield return new WaitForSeconds(0.1f);
     }
     public void OnBtnLogoutClicked(){
         ((PlayGamesPlatform)Social.Active).SignOut();
-        myLog.text = "LogOut...";
+        tmp.Warnings("LogOut...", Color.black);
         IsSigned= false;
     }
 
@@ -103,7 +106,11 @@ public class GooglePlay : MonoBehaviour
             }
         });
     }
-    public void ShowLeaderBoard(){
+    public void OnLeaderBoard(){
+
+        ShowLeaderBoard();
+    }
+    public static void ShowLeaderBoard(){
         if(Social.localUser.authenticated == false){
             return;
             Social.localUser.Authenticate((bool success)=>{

@@ -14,14 +14,14 @@ public class OptionMgr : MonoBehaviour
     public static DateTime openTime, closeTime;
     public static TimeSpan acumTime;
     public Sprite soundOn , soundOff;
-    void Start()
+    void Awake()
     {
         openTime = closeTime = DateTime.Now;
         acumTime = closeTime-openTime;
         isOpened = false;
 //        LeaderBoard.onClick.AddListener(delegate(){Open(gLeaderBoard);});
         Setting.onClick.AddListener(delegate(){SceneManager.LoadScene("StartScene"); GameMgr.GameState = State.NONE;});
-        Post.onClick.AddListener(delegate(){GameController.instance.SoundSetState();});
+        Post.onClick.AddListener(GameController.instance.SoundSetState);
         Post.onClick.AddListener(delegate(){SoundSprite(GameController.instance.sound);});
 //        gLeaderBoard.GetComponent<LeaderBoard>().ReadFromFile();
         //Secret.onClick.AddListener(delegate(){Open("Secret");});

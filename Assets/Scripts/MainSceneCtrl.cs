@@ -11,10 +11,10 @@ public class MainSceneCtrl : MonoBehaviour{
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu)){
-            Time.timeScale  = 0.0f;
+        if(Input.GetKeyDown(KeyCode.Home) || Input.GetKeyDown(KeyCode.Menu)){
             PausePanel.SetActive(true);
             GameMgr.GameState= State.PAUSE;
+            Time.timeScale  = 0.0f;
         }
         else{
             if(Input.GetKeyDown(KeyCode.Escape)){

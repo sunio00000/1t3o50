@@ -20,7 +20,7 @@ public class GameMgr : MonoBehaviour
     public RawImage IdPicture;
     public Text GoogleId;
     public static Dictionary<int,bool> IsExist = new Dictionary<int, bool>();
-    public int MAX =5, endValue = 25;
+    public int MAX =5, endValue = 50;
     private const float PAD = 157.0f;
     public GameObject btn, gameView, Current, Counted, TimeView;
     public Text showTime;

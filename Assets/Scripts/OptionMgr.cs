@@ -20,7 +20,7 @@ public class OptionMgr : MonoBehaviour
         acumTime = closeTime-openTime;
         isOpened = false;
 //        LeaderBoard.onClick.AddListener(delegate(){Open(gLeaderBoard);});
-        Setting.onClick.AddListener(delegate(){SceneManager.LoadScene("StartScene"); GameMgr.GameState = State.NONE;});
+        Setting.onClick.AddListener(delegate(){SceneManager.LoadScene("StartScene"); GameMgr.GameState = State.NONE; MessageMgr.isOn= false;});
         Post.onClick.AddListener(GameController.instance.SoundSetState);
         Post.onClick.AddListener(delegate(){SoundSprite(GameController.instance.sound);});
 //        gLeaderBoard.GetComponent<LeaderBoard>().ReadFromFile();

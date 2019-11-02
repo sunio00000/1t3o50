@@ -18,7 +18,7 @@ public class RankMgr : MonoBehaviour
     LeaderboardScoreData leaderboard;
     private void Awake() {
         leaderboard = new LeaderboardScoreData(Social.localUser.id);
-        myRank = leaderboard.PlayerScore.rank;
+        //myRank = leaderboard.PlayerScore.rank;
         callback = SetStatus;
     }
     void Start()

@@ -11,6 +11,7 @@ public class Normal : NumberMgr
     protected override void Appear(){}
     protected override void Disappear(){
         if(GameMgr.GameState == State.PLAY){
+            Debug.Log(myNum);
             if(isBreaking) return;
             if(myNum == GameMgr.currNum) NewNumber();
             else if(GameMgr.currNum < 10){
@@ -51,6 +52,7 @@ public class Normal : NumberMgr
     protected override  bool IsCorrect(){return true;}
     public void BrokeNumber(){
         gameObject.GetComponent<Animation>().Play("BreakNumber");
+        
     }
     public void SetNumber(){
         GameMgr.SetNumber(transform,26,51);
@@ -59,6 +61,7 @@ public class Normal : NumberMgr
         GameMgr.inst.MissSound();
         gameObject.GetComponent<Animation>().Play("MissNumber");
         GameMgr.inst.TimeView.GetComponent<Animation>().Play("addTimeCuzMiss");
+        Handheld.Vibrate();
         missTime += 0.2f;
     }
 

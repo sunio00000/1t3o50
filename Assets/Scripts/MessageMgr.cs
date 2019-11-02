@@ -20,10 +20,12 @@ public class MessageMgr : MonoBehaviour
         StartCoroutine(countDown());
     }
     private IEnumerator countDown(){
-        float start =3.99f;
+        float start =3.99f; int count = 0;
         while(start >1.0f){
             msg.text = ((int)start).ToString();
             start -= 0.1f;
+            if(count%10==0) GameMgr.inst.Count();
+            count ++;
             yield return new WaitForSeconds(0.1f);
         }
         GameMgr.GameState = State.PLAY;

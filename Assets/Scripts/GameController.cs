@@ -47,4 +47,8 @@ public class GameController : MonoBehaviour{
         }
 
     }
+
+    private void OnApplicationPause(bool pauseStatus) {
+        
+    }
 }

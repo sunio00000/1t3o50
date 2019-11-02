@@ -8,7 +8,7 @@ using GooglePlayGames.BasicApi;
 public class GooglePlay : MonoBehaviour
 {
     public static GooglePlay instance;
-    SceneMgr tmp;
+    public SceneMgr tmp;
     public Text scoreText;
     public Text myLog;
     public RawImage myImage;
@@ -25,8 +25,8 @@ public class GooglePlay : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "StartScene")
         {
             tmp = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SceneMgr>();
+            LoginBtn = tmp.LoginBtn;
         }
-        LoginBtn.onClick.AddListener(OnBtnLoginClicked);
         PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder().Build());
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
@@ -61,6 +61,7 @@ public class GooglePlay : MonoBehaviour
     public IEnumerator AuthLoad(){
         Social.localUser.Authenticate((bool success) =>{
             if(success){
+                authenticateCallback(success);
                 tmp.Warnings("Login Successfully.", Color.green);
                 IsSigned = true;
             }
@@ -99,7 +100,6 @@ public class GooglePlay : MonoBehaviour
     public void ReportToBoard(long score){
         PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_1to50ver369, (bool success)=>{
             if(success){
-
             }
             else{
 
@@ -109,7 +109,7 @@ public class GooglePlay : MonoBehaviour
     public void OnLeaderBoard(){
 
         ShowLeaderBoard();
-    }
+        }
     public static void ShowLeaderBoard(){
         if(Social.localUser.authenticated == false){
             return;

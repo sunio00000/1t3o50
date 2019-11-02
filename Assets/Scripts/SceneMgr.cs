@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 using System;
 
 public class SceneMgr : MonoBehaviour{
-    public Button startBtn, OptionBtn, QuitBtn, leaderBtn, bQuit, bCancel;
+    public AudioSource btn;
+    public Button startBtn, OptionBtn, QuitBtn, leaderBtn, bQuit, bCancel, LoginBtn;
+    public Text gooScoreText , gooMyLog;
+    public RawImage gooMyImage;
 
     public GameObject OptionWindow, QuitRequestWindow;
     public Text warn;
@@ -16,16 +19,23 @@ public class SceneMgr : MonoBehaviour{
         bQuit.onClick.AddListener(Quit);
         bCancel.onClick.AddListener(QuitCancel);
         leaderBtn.onClick.AddListener(GooglePlay.ShowLeaderBoard);
+        leaderBtn.onClick.AddListener(delegate(){btn.Play();});
+        GooglePlay.instance.tmp = this;
+        GooglePlay.instance.myImage = gooMyImage;
+        GooglePlay.instance.myLog = gooMyLog;
+        GooglePlay.instance.scoreText = gooScoreText;
+        LoginBtn.onClick.AddListener(GooglePlay.instance.OnBtnLoginClicked);
+        LoginBtn.onClick.AddListener(delegate(){btn.Play();});
     }
 
     public void StartGame(){
-        //GameMgr.inst.OnClick();
         if(Social.localUser.authenticated){
             SceneManager.LoadScene("MainScene");
         }
         else{
             StartCoroutine(Warn("You need to login.",Color.red));
         }
+        btn.Play();
     }
     public void Warnings(string msg, Color c){
         StartCoroutine(Warn(msg,c));
@@ -37,6 +47,9 @@ public class SceneMgr : MonoBehaviour{
         warn.gameObject.SetActive(false);
     }
     private void Update() {
+        if(Input.GetKeyDown(KeyCode.Home) || Input.GetKeyDown(KeyCode.Menu)){
+
+        }
         if(Input.GetKeyDown(KeyCode.Escape)){
             if(GameMgr.GameState == State.QUIT) GameController.instance.Quit();
             else    GameController.instance.QuitRequest();
@@ -44,21 +57,21 @@ public class SceneMgr : MonoBehaviour{
     }
 
     public void Option(){
-        OptionWindow.SetActive(true);
+        OptionWindow.SetActive(true);btn.Play();
     }
     public void OptionCancel(){
-        OptionWindow.SetActive(false);
+        OptionWindow.SetActive(false);btn.Play();
     }
     public void QuitRequest(){
         QuitRequestWindow.SetActive(true);
-        GameMgr.GameState = State.QUIT;
+        GameMgr.GameState = State.QUIT;btn.Play();
     }
     public void Quit(){
-        Application.Quit();
+        Application.Quit();btn.Play();
     }
     public void QuitCancel(){
         QuitRequestWindow.SetActive(false);
-        GameMgr.GameState = State.NONE;
+        GameMgr.GameState = State.NONE;btn.Play();
     }
 
 }

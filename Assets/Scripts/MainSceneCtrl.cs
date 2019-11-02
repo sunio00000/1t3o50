@@ -8,19 +8,25 @@ public class MainSceneCtrl : MonoBehaviour{
 
     private void OnEnable(){
     }
+    private void OnApplicationPause(bool pauseStatus) {
+        PausePanel.SetActive(true);
+        GameMgr.GameState= State.PAUSE;
+        Time.timeScale  = 0.0f;
+    }
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Home) || Input.GetKeyDown(KeyCode.Menu)){
-            PausePanel.SetActive(true);
-            GameMgr.GameState= State.PAUSE;
-            Time.timeScale  = 0.0f;
+            // PausePanel.SetActive(true);
+            // GameMgr.GameState= State.PAUSE;
+            // Time.timeScale  = 0.0f;
         }
         else{
             if(Input.GetKeyDown(KeyCode.Escape)){
                 if(GameMgr.GameState == State.NONE){
         // back     
                     SceneManager.LoadScene("StartScene");
+                    MessageMgr.isOn = false;
                 }
                 else if(GameMgr.GameState == State.PLAY){
         // pause

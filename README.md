@@ -5,6 +5,10 @@
 + Rank value percentage
 + Main Logo
 ***
+### [191103]
++ leader board refresh
++ device home, menu button 
++ number 50 bug , speed ?
 ### [191102]
 + sound button
 + load scene??? 

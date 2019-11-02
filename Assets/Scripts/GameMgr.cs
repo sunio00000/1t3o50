@@ -15,7 +15,7 @@ public enum State{
 
 public class GameMgr : MonoBehaviour
 {
-    public AudioSource audioMiss, btnOnClick;
+    public AudioSource audioMiss, btnOnClick, coundDown;
     public static GameMgr inst;
     public RawImage IdPicture;
     public Text GoogleId;
@@ -61,6 +61,9 @@ public class GameMgr : MonoBehaviour
     public void MissSound(){
         audioMiss.Play();
     }
+    public void Count(){
+        coundDown.Play();
+    }
     public void NormalBreakSound(){
         gameObject.GetComponent<AudioSource>().Play();
     }
@@ -79,7 +82,7 @@ public class GameMgr : MonoBehaviour
     public void Clear(){
         MessageMgr.inst.Stop();
         // time : 00:00.0000 type string
-        GooglePlay.instance.ReportToBoard(TakeTime.Milliseconds);
+        GooglePlay.instance.ReportToBoard(TakeTime.Milliseconds*1000);
         //SaveScore();
         Initialize();
         RefreshTiles();
@@ -97,7 +100,7 @@ public class GameMgr : MonoBehaviour
     public static void SetNumber( Transform tr, int min , int max){
         if(IsExist.Count >= GameMgr.inst.endValue){
             tr.GetChild(0).GetComponent<Text>().text = "-";
-            tr.GetChild(0).GetComponent<Text>().color = Color.blue;
+            tr.GetChild(0).GetComponent<Text>().color = Color.white;
             tr.GetComponent<Normal>().myNum = 10000;
             return ;
         }
@@ -108,7 +111,7 @@ public class GameMgr : MonoBehaviour
         IsExist[num] = true;
         if(num.ToString().Length==1){
             if(IsTSN(num.ToString()[0])) {
-                tr.GetChild(0).GetComponent<Text>().text = "¡Ú";
+                tr.GetChild(0).GetComponent<Text>().text = "â˜…";
                 tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
@@ -120,7 +123,7 @@ public class GameMgr : MonoBehaviour
         }
         else if(num.ToString().Length==2){
             if(IsTSN(num.ToString()[0]) || IsTSN(num.ToString()[1])) {
-                tr.GetChild(0).GetComponent<Text>().text ="¡Ú";
+                tr.GetChild(0).GetComponent<Text>().text ="â˜…";
                 tr.GetChild(0).GetComponent<Text>().color = Color.red;
                 tr.GetComponent<NumberMgr>().isTSN = true;
             }
@@ -142,7 +145,7 @@ public class GameMgr : MonoBehaviour
         Initialize(); CreateTiles();
     }
 
-    private  void Start()
+    private void Start()
     {
         GoogleId.text = Social.localUser.userName;
         IdPicture.texture = Social.localUser.image;
@@ -158,7 +161,7 @@ public class GameMgr : MonoBehaviour
                                         .Add(NumberMgr.GetMissTime()); // miss block
             time = showTime.text = TimeToString(curr);
             TakeTime = curr;
-        } // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ , ????? ï¿½ï¿½ï¿?, ï¿½ï¿½Æ° ?????
+        } // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ , ????? ï¿½ï¿½ï¿½?, ï¿½ï¿½Æ° ?????
         else if(GameState == State.OPTION){} // ??????
         else if(GameState ==State.CLEAR){} // ??????2
     }

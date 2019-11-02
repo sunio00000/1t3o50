@@ -5,6 +5,9 @@
 + Rank value percentage
 + Main Logo
 ***
+### [191102]
++ sound button
++ load scene??? 
 ### [191030]
 + main > login Scene button not working bug
 + leaderboard not showing bug

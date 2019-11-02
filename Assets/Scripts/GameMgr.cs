@@ -82,7 +82,7 @@ public class GameMgr : MonoBehaviour
     public void Clear(){
         MessageMgr.inst.Stop();
         // time : 00:00.0000 type string
-        GooglePlay.instance.ReportToBoard(TakeTime.Milliseconds*1000);
+        GooglePlay.instance.ReportToBoard((long)TakeTime.TotalMilliseconds);
         //SaveScore();
         Initialize();
         RefreshTiles();

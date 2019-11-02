@@ -4,6 +4,8 @@
 + PUBLICING.....
 + Rank value percentage
 + Main Logo
++ block initializer
++ start scene escape button
 ***
 ### [191103]
 + leader board refresh

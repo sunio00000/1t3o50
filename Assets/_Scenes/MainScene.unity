@@ -884,7 +884,7 @@ MonoBehaviour:
   IdPicture: {fileID: 168778073}
   GoogleId: {fileID: 1474002599}
   MAX: 5
-  endValue: 50
+  endValue: 25
   btn: {fileID: 4452741725488540280, guid: 7adb8c175c9330446b4a00d03d3ee7d0, type: 3}
   gameView: {fileID: 1432251863}
   Current: {fileID: 1593402714}
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9719956, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2725,7 +2725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2806,7 +2806,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 748ad610e2f032c4081fd3ca698495df, type: 3}
     m_FontSize: 25
-    m_FontStyle: 1
+    m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40

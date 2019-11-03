@@ -100,7 +100,7 @@ public class GameMgr : MonoBehaviour
     public static void SetNumber( Transform tr, int min , int max){
         if(IsExist.Count >= GameMgr.inst.endValue){
             tr.GetChild(0).GetComponent<Text>().text = "-";
-            tr.GetChild(0).GetComponent<Text>().color = Color.white;
+            tr.GetChild(0).GetComponent<Text>().color = Color.clear;
             tr.GetComponent<Normal>().myNum = 10000;
             return ;
         }
@@ -117,6 +117,7 @@ public class GameMgr : MonoBehaviour
             }
             else {
                 tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+                //tr.GetChild(0).GetComponent<Text>().color = Color.white;
                 tr.GetChild(0).GetComponent<Text>().color = new Color(0.3f,0.3f,0.3f,1);
             }
 
@@ -129,6 +130,7 @@ public class GameMgr : MonoBehaviour
             }
             else{
                 tr.GetChild(0).GetComponent<Text>().text = num.ToString();
+                //tr.GetChild(0).GetComponent<Text>().color = Color.white;
                 tr.GetChild(0).GetComponent<Text>().color = new Color(0.3f,0.3f,0.3f,1);
             } 
         }

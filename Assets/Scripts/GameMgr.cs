@@ -27,10 +27,9 @@ public class GameMgr : MonoBehaviour
     public static int currNum;
     public static State GameState;
     public string recentRecord;
-    public string time; // ???????????, �ɸ�?????, ...
+    public string time; 
     public static DateTime dateTime,currTime;
     public static TimeSpan TakeTime;
-    // (x,y) �»�???????? ??????.
     public void Initialize(){
         currNum = 1;
         GameState = State.NONE;

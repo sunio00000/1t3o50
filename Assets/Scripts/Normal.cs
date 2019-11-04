@@ -55,6 +55,7 @@ public class Normal : NumberMgr
         
     }
     public void SetNumber(){
+        if(GameMgr.GameState == State.NONE) return;
         GameMgr.SetNumber(transform,26,51);
     }
     public void MissNumber(){

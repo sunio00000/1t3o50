@@ -18,12 +18,15 @@ public class GameController : MonoBehaviour{
         
     }
     public void Option(){
+        if(OptionWindow == null) OptionWindow = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
         OptionWindow.SetActive(true);
     }
     public void OptionCancel(){
+        if(OptionWindow == null) OptionWindow = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject;
         OptionWindow.SetActive(false);
     }
     public void QuitRequest(){
+        if(QuitRequestWindow == null) QuitRequestWindow =GameObject.FindGameObjectWithTag("Player").transform.GetChild(1).gameObject;
         QuitRequestWindow.SetActive(true);
         GameMgr.GameState = State.QUIT;
     }
@@ -31,6 +34,7 @@ public class GameController : MonoBehaviour{
         Application.Quit();
     }
     public void QuitCancel(){
+        if(QuitRequestWindow == null) QuitRequestWindow =GameObject.FindGameObjectWithTag("Player").transform.GetChild(1).gameObject;
         QuitRequestWindow.SetActive(false);
         GameMgr.GameState = State.NONE;
     }

@@ -1,12 +1,10 @@
 # 1to50 new Version
 ### [Expect]
-+ NumberView, TimeView Font Revise
-+ PUBLICING.....
 + Rank value percentage
-+ Main Logo
-+ block initializer
-+ start scene escape button
 ***
+### [191104]
++ PUBLISH
++ bug fixx.
 ### [191103]
 + leader board refresh
 + device home, menu button 

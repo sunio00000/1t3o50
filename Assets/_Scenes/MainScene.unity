@@ -884,7 +884,7 @@ MonoBehaviour:
   IdPicture: {fileID: 168778073}
   GoogleId: {fileID: 1474002599}
   MAX: 5
-  endValue: 25
+  endValue: 50
   btn: {fileID: 4452741725488540280, guid: 7adb8c175c9330446b4a00d03d3ee7d0, type: 3}
   gameView: {fileID: 1432251863}
   Current: {fileID: 1593402714}
@@ -3343,7 +3343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.56078434, g: 0.7568628, b: 0.9607844, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

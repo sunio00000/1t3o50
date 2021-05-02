@@ -1,7 +1,7 @@
 # 1to50 new Version
 ### [Play Store]
 - https://play.google.com/store/apps/details?id=com.sunio.otof369
-### [Expect]
+### [ToDo]
 + Rank value percentage
 ***
 ### [191104]

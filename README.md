@@ -1,9 +1,10 @@
-# 1to50 new Version
-### [Play Store]
+# 퍼즐 게임 **"1to50"** new Version
+## [Play Store]
 - https://play.google.com/store/apps/details?id=com.sunio.otof369
 ### [ToDo]
 + Rank value percentage
 ***
+# 개발 기록 및 이슈
 ### [191104]
 + PUBLISH
 + bug fixx.
